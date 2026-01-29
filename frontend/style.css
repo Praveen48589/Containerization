@@ -1,0 +1,302 @@
+/* ===== RESET ===== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* ===== BODY ===== */
+body {
+    font-family: 'Segoe UI', Tahoma, sans-serif;
+    background: radial-gradient(circle at top, #0f172a, #020617);
+    color: #e5e7eb;
+    line-height: 1.7;
+    overflow-x: hidden;
+}
+
+/* ===== SECTIONS ===== */
+section {
+    max-width: 1100px;
+    margin: 90px auto;
+    padding: 30px;
+    opacity: 0;
+    transform: translateY(50px);
+    transition: all 0.9s ease;
+}
+
+section.show {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* ===== HERO ===== */
+.hero {
+    text-align: center;
+    margin-top: 130px;
+}
+
+.hero h1 {
+    font-size: 3.8rem;
+    background: linear-gradient(to right, #38bdf8, #22c55e);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: glow 2s ease-in-out infinite alternate;
+}
+
+@keyframes glow {
+    from { text-shadow: 0 0 15px rgba(56,189,248,0.3); }
+    to { text-shadow: 0 0 35px rgba(34,197,94,0.8); }
+}
+
+.hero h3 {
+    margin-top: 18px;
+    font-size: 1.6rem;
+    color: #94a3b8;
+}
+
+/* ===== HEADINGS ===== */
+h2 {
+    font-size: 2.5rem;
+    color: #22c55e;
+    margin-bottom: 25px;
+}
+
+OBOBOBOBOB/* ===== DIVIDER ===== */
+OBOBhr {
+OBOB    border: none;
+OBOB    height: 1px;
+OBOBOB    background: linear-gradient(to right, transparent, #334155, transparent);
+OBOBOB}
+OBOBOB
+OBOBOB/* ===== SKILLS GRID ===== */
+OBOBOB.skills {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+OBOB    gap: 28px;
+}
+OBOBOBOBOBOB
+OBOBOBOBOB.skill {
+    background: rgba(255,255,255,0.04);
+    border: 1px solid rgba(255,255,255,0.12);
+OBOBOBOBOBOB    padding: 28px;
+    border-radius: 18px;
+OBOBOBOBOBOBOBOBOBOBOBOBOBOB    text-align: center;
+    backdrop-filter: blur(14px);
+    transition: transform 0.45s ease, box-shadow 0.45s ease;
+OBOBOBOBOBOBOBOBOBOBOBOB}
+
+OBOBOBOBOBOBOBOB.skill:hover {
+    transform: translateY(-14px) scale(1.06);
+    box-shadow: 0 0 40px rgba(56,189,248,0.45);
+}
+
+OBOBOBOBOB.skill img {
+    width: 60px;
+OBOBOBOBOBOBOBOBOBOB    height: 60px;
+    margin-bottom: 12px;
+    background: rgba(255,255,255,0.08);
+    padding: 12px;
+OBOBOBOBOBOBOBOBOBOB    border-radius: 14px;
+    filter: drop-shadow(0 0 10px rgba(255,255,255,0.35));
+    transition: transform 0.45s ease, filter 0.45s ease;
+}
+
+OBOBOBOBOBOB.skill:hover img {
+    transform: rotate(-6deg) scale(1.2);
+OBOBOBOB    filter: drop-shadow(0 0 22px rgba(34,197,94,0.9));
+}
+
+OBOBOB/* ===== PROJECTS ===== */
+.projects {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 28px;
+}
+OBOBOB
+.project {
+    background: rgba(255,255,255,0.04);
+OB    border: 1px solid rgba(255,255,255,0.12);
+    padding: 28px;
+    border-radius: 18px;
+    transition: transform 0.45s ease, box-shadow 0.45s ease;
+}
+
+.project:hover {
+    transform: translateY(-12px);
+    box-shadow: 0 0 35px rgba(34,197,94,0.45);
+}
+
+/* ===== TEXT LINKS (if any) ===== */
+.links {
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.links a {
+    padding: 14px 24px;
+    border-radius: 999px;
+    background: rgba(255,255,255,0.06);
+    border: 1px solid rgba(255,255,255,0.12);
+    color: #38bdf8;
+    text-decoration: none;
+}
+
+/* ===== SOCIAL ICONS (FIXED SIZE) ===== */
+.socials {
+    display: flex;
+    justify-content: center;
+    gap: 32px;
+    margin-top: 30px;
+}
+
+.socials a {
+    width: 64px;
+    height: 64px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background: rgba(255,255,255,0.08);
+    border: 1px solid rgba(255,255,255,0.15);
+    border-radius: 50%;
+
+    transition: transform 0.35s ease, box-shadow 0.35s ease;
+}
+
+.socials a:hover {
+    transform: translateY(-8px) scale(1.1);
+    box-shadow: 0 0 30px rgba(56,189,248,0.6);
+}
+
+.socials img {
+    width: 28px;
+    height: 28px;
+    max-width: 28px;
+    max-height: 28px;
+    object-fit: contain;
+}
+
+/* ===== FOOTER ===== */
+footer {
+    height: 140px;
+}
+
+
+/* ===== HERO ADVANCED ANIMATION ===== */
+.hero {
+    position: relative;
+}
+
+.hero::before {
+    content: "";
+    position: absolute;
+    top: -60px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 420px;
+    height: 420px;
+    background: radial-gradient(circle, rgba(56,189,248,0.15), transparent 70%);
+    filter: blur(60px);
+    z-index: -1;
+}
+
+#typing {
+    color: #38bdf8;
+    border-right: 2px solid #38bdf8;
+    padding-right: 6px;
+    animation: blink 0.8s infinite;
+}
+
+@keyframes blink {
+    0%, 50%, 100% { border-color: transparent; }
+    25%, 75% { border-color: #38bdf8; }
+}
+
+/* ===== HERO VISUAL BACKGROUND ===== */
+.hero {
+    position: relative;
+    overflow: hidden;
+}
+
+.hero-content {
+    position: relative;
+    z-index: 2;
+}
+
+.hero-bg {
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    pointer-events: none;
+}
+
+/* ===== CLOUDS ===== */
+.cloud {
+    position: absolute;
+    background: rgba(255,255,255,0.08);
+    border-radius: 50%;
+    filter: blur(20px);
+    animation: floatCloud 40s linear infinite;
+}
+
+.cloud1 {
+    width: 260px;
+    height: 120px;
+    top: 20%;
+    left: -30%;
+}
+
+.cloud2 {
+    width: 320px;
+    height: 140px;
+    top: 45%;
+    left: -40%;
+    animation-duration: 55s;
+}
+
+.cloud3 {
+    width: 200px;
+    height: 100px;
+    top: 65%;
+    left: -25%;
+    animation-duration: 65s;
+}
+
+@keyframes floatCloud {
+    from { transform: translateX(0); }
+    to { transform: translateX(160vw); }
+}
+
+/* ===== FLOATING ICONS ===== */
+.icon {
+    position: absolute;
+    font-size: 2.8rem;
+    opacity: 0.6;
+    animation: floatIcon 6s ease-in-out infinite;
+}
+
+.computer {
+    top: 25%;
+    right: 18%;
+}
+
+.server {
+    top: 55%;
+    right: 8%;
+    animation-delay: 2s;
+}
+
+.cloud-icon {
+    top: 35%;
+    right: 35%;
+    animation-delay: 4s;
+}
+
+@keyframes floatIcon {
+    0% { transform: translateY(0); }
+    50% { transform: translateY(-14px); }
+    100% { transform: translateY(0); }
+}
+
