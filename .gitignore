@@ -1,4 +1,7 @@
 # OS / system files
+*.env
+.env
+
 .*
 !.gitignore
 
