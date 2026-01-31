@@ -1,0 +1,10 @@
+
+FROM mysql:8.0
+
+ENV MYSQL_ROOT_PASSWORD=root
+ENV MYSQL_DATABASE=devops_db
+ENV MYSQL_USER=devops
+env MYSQL_PASSWOrd=devops123
+
+EXPOSE 3306
+
