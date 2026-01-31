@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # Vim temp files
 *.swp
 *.swo
@@ -11,4 +12,22 @@
 # Secrets
 .env
 .ssh/
+=======
+# OS / system files
+*.env
+.env
+
+.*
+!.gitignore
+
+# Node
+node_modules/
+
+# Python
+__pycache__/
+*.pyc
+
+# Logs
+*.log
+>>>>>>> b2e4e0c787babc6e86b53f46f06d3b26be54df82
 
