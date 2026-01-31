@@ -1,10 +1,10 @@
-# Chang the ports of an application by env :
+# Change the ports of an application by env :
 
 
 >> docker run -d -p 3000:4000 -e PORT=4000 --name app-env-1 app-env
 
 
-# Change the message in application code :
+# Show the message without changing the application code by env  :
 
 >> docker run -d -p 3000:4000 -e MESSAGE="HELLO USERS!!" --name app-env-1 app-env
 
