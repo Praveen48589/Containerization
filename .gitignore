@@ -1,0 +1,14 @@
+# Vim temp files
+*.swp
+*.swo
+*.swn
+
+# OS files
+.cache/
+.bash*
+.viminfo
+
+# Secrets
+.env
+.ssh/
+
