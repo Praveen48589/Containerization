@@ -1,0 +1,20 @@
+# CREATE A VOLUME && LIST THEM 
+
+ >> docker volume create mydata , docker volume ls
+
+# RUN CONTAINER , ATTACH WITH MYSQL BIND MOUNT >>  /VAR/LIB/MYSQL
+
+>>  docker run -d --name mysql_db -v mydata:/var/lib/mysql -p 3000:3306  mysql
+
+# CREATE DATA TABLE INSIDE CONTAINER 
+
+>> docker exec -it mysql_db mysql -u devops -p
+
+>> enter the password
+
+
+
+
+
+
+
