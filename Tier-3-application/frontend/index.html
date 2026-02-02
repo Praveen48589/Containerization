@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>NeoContact</title>
+
+  <style>
+    * {
+      box-sizing: border-box;
+      font-family: "Poppins", sans-serif;
+    }
+
+    body {
+      margin: 0;
+      height: 100vh;
+      background: radial-gradient(circle at top, #0f2027, #203a43, #2c5364);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+    }
+
+    /* glowing background orbs */
+    .orb {
+      position: absolute;
+      width: 250px;
+      height: 250px;
+      background: radial-gradient(circle, #00f2fe, transparent);
+      filter: blur(80px);
+      animation: float 8s infinite alternate;
+    }
+
+    .orb.one { top: 10%; left: 15%; }
+    .orb.two { bottom: 15%; right: 10%; animation-delay: 2s; }
+
+    @keyframes float {
+      from { transform: translateY(0); }
+      to { transform: translateY(-40px); }
+    }
+
+    .glass-card {
+      position: relative;
+      z-index: 10;
+      width: 380px;
+      padding: 35px;
+      border-radius: 20px;
+      background: rgba(255, 255, 255, 0.12);
+      backdrop-filter: blur(20px);
+      box-shadow: 0 0 40px rgba(0, 255, 255, 0.25);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+    }
+
+    h1 {
+      text-align: center;
+      color: #ffffff;
+      margin-bottom: 30px;
+      letter-spacing: 1px;
+    }
+
+    .field {
+      position: relative;
+      margin-bottom: 25px;
+    }
+
+    .field input {
+      width: 100%;
+      padding: 14px;
+      background: transparent;
+      border: 1px solid rgba(255, 255, 255, 0.4);
+      border-radius: 10px;
+      color: white;
+      font-size: 15px;
+      outline: none;
+    }
+
+    .field label {
+      position: absolute;
+      top: 50%;
+      left: 14px;
+      color: rgba(255, 255, 255, 0.7);
+      font-size: 14px;
+      transform: translateY(-50%);
+      pointer-events: none;
+      transition: 0.3s;
+    }
+
+    .field input:focus + label,
+    .field input:not(:placeholder-shown) + label {
+      top: -8px;
+      font-size: 12px;
+      color: #00f2fe;
+      background: rgba(0,0,0,0.6);
+      padding: 0 6px;
+      border-radius: 5px;
+    }
+
+    button {
+      width: 100%;
+      padding: 14px;
+      border-radius: 12px;
+      border: none;
+      background: linear-gradient(135deg, #00f2fe, #4facfe);
+      color: #000;
+      font-size: 16px;
+      font-weight: bold;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+
+    button:hover {
+      box-shadow: 0 0 20px #00f2fe;
+      transform: scale(1.03);
+    }
+
+    .status {
+      margin-top: 18px;
+      text-align: center;
+      font-weight: bold;
+      min-height: 20px;
+    }
+
+    .success { color: #00ff9c; }
+    .error { color: #ff6b6b; }
+
+    footer {
+      margin-top: 25px;
+      text-align: center;
+      font-size: 12px;
+      color: rgba(255, 255, 255, 0.6);
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="orb one"></div>
+  <div class="orb two"></div>
+
+  <div class="glass-card">
+    <h1>🚀 NeoContact</h1>
+
+    <div class="field">
+      <input id="username" type="text" required placeholder=" " />
+      <label>Username</label>
+    </div>
+
+    <div class="field">
+      <input id="contact" type="text" required placeholder=" " />
+      <label>Contact Number</label>
+    </div>
+
+    <button onclick="save()">Save Contact</button>
+
+    <div id="status" class="status"></div>
+
+    <footer>Docker Networking Project</footer>
+  </div>
+
+  <script>
+    function save() {
+      const username = document.getElementById("username").value;
+      const contact = document.getElementById("contact").value;
+      const status = document.getElementById("status");
+
+      if (!username || !contact) {
+        status.className = "status error";
+        status.innerText = "⚠️ All fields are required";
+        return;
+      }
+
+      fetch("http://15.206.153.124:3000/add", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify({ username, contact })
+      })
+      .then(res => res.text())
+      .then(data => {
+        status.className = "status success";
+        status.innerText = data;
+        document.getElementById("username").value = "";
+        document.getElementById("contact").value = "";
+      })
+      .catch(err => {
+        console.error(err);
+        status.className = "status error";
+        status.innerText = "❌ Backend not reachable";
+      });
+    }
+  </script>
+
+</body>
+</html>
+
