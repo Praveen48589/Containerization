@@ -1,0 +1,8 @@
+# COMMAND,S FOR CONNECT >> FRONTEND , BACKEND , DATABSE IN SAME NETWORK::
+
+1 . FRONTEND >>   docker run -d --name frontend --network my-network -p 8080:80 frontend
+2 . BACKEND >> docker run -d --name backend --network my-network -p 3000:3000 backend
+3 . DATABASE >> docker run -d --name db --network my-network -v mysql-data:/var/lib/mysql -e MYSQL_ROOT_PASSWORD=root -e MYSQL_DATABASE=contactdb -e MYSQL_USER=appuser -e MYSQL_PASSWORD=apppass mysql:8
+
+  DB ACCESS COMMAND >> docker exec -it db mysql -uappuser -papppass      >> db is container name 
+
