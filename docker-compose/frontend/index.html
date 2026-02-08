@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>NeoContact 🚀</title>
+
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #0f172a;
+      color: white;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+
+    .card {
+      background: #1e293b;
+      padding: 30px;
+      border-radius: 15px;
+      width: 350px;
+      box-shadow: 0px 0px 20px rgba(0,0,0,0.5);
+    }
+
+    h1 {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+
+    input {
+      width: 100%;
+      padding: 10px;
+      margin: 10px 0;
+      border-radius: 8px;
+      border: none;
+      outline: none;
+    }
+
+    button {
+      width: 100%;
+      padding: 12px;
+      background: #38bdf8;
+      border: none;
+      border-radius: 8px;
+      font-size: 16px;
+      cursor: pointer;
+      font-weight: bold;
+    }
+
+    button:hover {
+      background: #0ea5e9;
+    }
+
+    #msg {
+      margin-top: 15px;
+      text-align: center;
+      font-weight: bold;
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="card">
+    <h1>🚀 NeoContact</h1>
+
+    <input type="text" id="username" placeholder="Enter Username" />
+    <input type="text" id="contact" placeholder="Enter Contact Number" />
+
+    <!-- ✅ IMPORTANT FIX -->
+    <button type="button" onclick="saveContact()">Save Contact</button>
+
+    <p id="msg"></p>
+  </div>
+
+  <script>
+    async function saveContact() {
+      console.log("✅ Save button clicked");
+
+      const username = document.getElementById("username").value;
+      const contact = document.getElementById("contact").value;
+      const msg = document.getElementById("msg");
+
+      if (!username || !contact) {
+        msg.innerHTML = "⚠️ Please fill all fields";
+        msg.style.color = "yellow";
+        return;
+      }
+
+      // ✅ Backend API URL (Public EC2 IP)
+      const BACKEND_URL = "http://3.108.227.232:3000/add";
+
+      console.log("Sending request to:", BACKEND_URL);
+
+      try {
+        const response = await fetch(BACKEND_URL, {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json"
+          },
+          body: JSON.stringify({
+            username: username,
+            contact: contact
+          })
+        });
+
+        const result = await response.text();
+        console.log("Backend Response:", result);
+
+        if (response.ok) {
+          msg.innerHTML = "✅ Contact Saved Successfully!";
+          msg.style.color = "lightgreen";
+        } else {
+          msg.innerHTML = "❌ Error: " + result;
+          msg.style.color = "red";
+        }
+
+      } catch (error) {
+        console.log("❌ FETCH ERROR:", error);
+
+        msg.innerHTML = "❌ Backend not reachable! Check Console (F12)";
+        msg.style.color = "red";
+      }
+    }
+  </script>
+
+</body>
+</html>
+
