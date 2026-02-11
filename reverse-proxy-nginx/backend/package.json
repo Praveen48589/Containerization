@@ -1,0 +1,9 @@
+{
+  "name": "backend-app",
+  "version": "1.0.0",
+  "description": "Simple backend for Nginx reverse proxy demo",
+  "main": "index.js",
+  "dependencies": {
+    "express": "^4.18.2"
+  }
+}
